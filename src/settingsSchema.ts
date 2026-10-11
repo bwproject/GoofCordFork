@@ -354,12 +354,12 @@ export const settingsSchema = {
 		proxy: setting("checkbox", {
 			name: "Proxy",
 			defaultValue: false,
-			description: "Routes Discord traffic through an HTTP, HTTPS or SOCKS5 proxy. Internal GoofCord requests (e.g., fetching external assets) will bypass this proxy.",
+			description: "Routes Discord traffic through an HTTP, HTTPS, SOCKS4 or SOCKS5 proxy. Internal GoofCord requests (e.g., fetching external assets) may bypass this proxy.",
 		}),
 		proxyRules: setting("textfield", {
 			name: "Proxy rules",
 			defaultValue: "socks5://127.0.0.1:1080",
-			description: 'Enter proxy rules, for example <code>socks5://127.0.0.1:1080</code>, <code>http://127.0.0.1:3128</code> or <code>https://proxy.example:8443</code>. SOCKS5 proxies should be configured without username/password authentication. See the <a target="_blank" href="https://www.electronjs.org/docs/latest/api/structures/proxy-config">Electron documentation</a>.',
+			description: 'Enter a proxy URL, for example <code>socks5://127.0.0.1:1080</code> or <code>socks5://username:password@host:1080</code>. Authenticated SOCKS4/5 URLs are bridged through a local HTTP proxy because Electron does not support SOCKS proxy authentication directly. Credentials are stored in GoofCord settings; use a dedicated proxy password. See the <a target="_blank" href="https://github.com/MissGwen/electron-viasocks">authentication bridge documentation</a>.',
 			showAfter: {
 				key: "proxy",
 				condition: (value) => value === true,
