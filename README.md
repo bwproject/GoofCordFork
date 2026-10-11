@@ -59,6 +59,16 @@ To explore plugins and themes, head over to the Vencord category in the Discord 
 5. Package GoofCord with either `bun run packageWindows`, `bun run packageLinux` or `bun run packageMac`
 6. Find the compiled app in the `dist` folder.
 
+## Proxy configuration
+
+GoofCordFork supports HTTP, HTTPS and SOCKS5 proxy rules for Discord traffic. Open **Settings → Other → Proxy**, enable the proxy, and set **Proxy rules** to a URL such as:
+
+- SOCKS5: `socks5://127.0.0.1:1080`
+- HTTP: `http://127.0.0.1:3128`
+- HTTPS: `https://proxy.example:8443`
+
+Set **Proxy bypass rules** if some hosts should connect directly. The current SOCKS5 implementation uses Electron/Chromium's built-in proxy support and does **not** support SOCKS5 username/password authentication. GoofCord's own asset/update requests may bypass the proxy.
+
 ## Short FAQ
 
 ### Need Support? Join Our Discord!
